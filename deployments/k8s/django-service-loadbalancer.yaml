@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prodxcloud-django-web-dev
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "clb"  # Use "nlb" for Network Load Balancer or "clb" for Classic Load Balancer
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"  # To expose the Load Balancer publicly
+    # service.beta.kubernetes.io/aws-load-balancer-subnets: ""  # Replace with your public subnet IDs
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/healthz"  # Replace with your health check endpoint
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "20"  # Interval in seconds
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "5"  # Timeout in seconds
+
+spec:
+  selector:
+    app: prodxcloud-django-web-dev
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8585
+      # nodePort: 32767
+  type: LoadBalancer

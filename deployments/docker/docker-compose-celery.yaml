@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  celery:
+    container_name: prodxcloud-django-celery
+    build: .
+    command: 
+       - /bin/sh
+       - -c
+       - |
+        user=django
+        group=developers
+        environment=C_FORCE_ROOT="yes"
+        environment=HOME="/root",USER="django"
+        celery -A multitenantsaas worker -l info
+        
+    volumes:
+      - .:/django_app
+    environment:
+      - DEBUG=0
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 172.104.60.217  [::1]
+      - CELERY_BROKER_URL="redis://redis:6379/0"
+      - CELERY_RESULT_BACKEND="redis://redis:6379/0"
+      - broker_connection_retry_on_startup="True"
+      - CELERY_TASK_ALWAYS_EAGER=True
+      - C_FORCE_ROOT=true
+      - BROKER_TRANSPORT="kombu.transport.django"
+    depends_on:
+      - redis

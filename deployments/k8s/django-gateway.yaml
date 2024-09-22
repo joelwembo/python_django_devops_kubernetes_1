@@ -1,0 +1,18 @@
+# django-gateway.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: django-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway # Use Istio's default Ingress Gateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "api.prodxcloud.io"
+
+

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prodxcloud-django-web-dev
+  labels:
+    app: prodxcloud-django-web-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prodxcloud-django-web-dev
+  template:
+    metadata:
+      labels:
+        app: prodxcloud-django-web-dev
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - prodxcloud-django-web-dev
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: prodxcloud-django-web-dev
+          image: joelwembo/prodxcloud-django-web-dev:latest
+          command: ['gunicorn', '--bind', '0.0.0.0:8585', 'multitenantsaas.wsgi:application']
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8585
+          envFrom:
+            - configMapRef:
+                name: django-env-configmap
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+            limits:
+              memory: "2Gi"
+              cpu: "2"

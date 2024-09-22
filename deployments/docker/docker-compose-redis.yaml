@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  redis:
+      image: "redis:alpine"
+      container_name: prodxcloud-django-redis
+      ports:
+        - '6379:6379'
+      expose:
+        - "6379"  
+      volumes:
+          - redisDB:/data
+      networks:
+          - redis_network  #

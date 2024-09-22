@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-env-configmap
+data:
+  SERVER: https://api.prodxcloud.io
+  DEBUG: "True"
+  DJANGO_SECRET_KEY: 1%jjnu7=54g6s%qjfnhbpw0zeoei=$!her*y(p%!&84rs$4l85io
+  DJANGO_SUPERUSER_PASSWORD: abcde@12345
+  DJANGO_SUPERUSER_EMAIL: joelwembo@outlook.com
+  DJANGO_SUPERUSER_USERNAME: joelwembo
+  ALLOWED_PORTS: "*"
+  POSTGRES_NAME: db
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_PORT: "5432"
+  POSTGRES_HOST: localhost
+  POSTGRES_URL: postgresql://postgres:postgres@localhost:5432/db
+  BASE_URL: http://localhost:8585
+  FRONTEND_URL: http://localhost:3000
+  ACCESS_TOKEN_LIFETIME: '86400'
+  DEBUG_TOOLBAR_ENABLED: 'False'
+  TIME_ZONE: UTC
+  ALLOWED_HOSTS: '*'
+  CORS_ALLOW_ALL_ORIGINS: 'True'
+
