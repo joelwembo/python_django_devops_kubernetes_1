@@ -1,0 +1,17 @@
+target/
+
+.classpath
+.class
+.project
+.settings/
+.idea/
+.DS_Store
+*.iml
+*.log
+.java-version
+.terraform
+
+# Visual Studio temp
+.vs/
+.terraform.lock.hcl
+.last-env

@@ -1,0 +1,47 @@
+trigger:
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+- script: |
+    RC_FILE=".terraformrc"
+    cat > ${RC_FILE} << EOF
+    credentials "app.terraform.io" {
+      token = "$(token)"
+    }
+    EOF
+    mv .terraformrc ~/.terraformrc
+    export TF_CLI_CONFIG_FILE="~/.terraformrc"
+    export TF_WORKSPACE=prodxcloud
+  name: terraform_cloud_credentials
+  displayName: 'Terraform Cloud Credentials'
+
+- script: |
+    # terraform destroy -auto-approve -input=false  -lock=false
+    terraform init -reconfigure
+    export TF_WORKSPACE=prodxcloud
+    terraform validate
+  displayName: 'Terraform Init and Validate'
+
+- script: terraform fmt
+  displayName: 'Terraform Format'
+
+- script: terraform fmt
+  displayName: 'Terraform Plan'
+
+- script: terraform apply -auto-approve
+  displayName: 'Terraform Apply'
+  condition: succeeded()
+
+- script: terraform destroy -auto-approve
+  displayName: 'Terraform Destroy Resources'
+
