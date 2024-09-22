@@ -9,7 +9,7 @@
 
 
 ## Introduction
-Automating deployment processes is crucial for modern web development, enhancing productivity and reliability. In this article, we focus on automating the deployment of a Django web application onto an Ubuntu Server hosted on AWS EC2.
+Automating deployment processes is crucial for modern web development, enhancing productivity and reliability. In this article, we focus on automating the deployment of a Django web application onto an Ubuntu Server hosted on AWS EC2 / AWS EKS / AWS ECS / Azure AKS.
 
 
 ### Prerequisites:
