@@ -1,7 +1,7 @@
-# Python, Django DevOps Kubernetes Part 1
+# Django DevOps with Kubernetes: Django Deployment to Azure AKS using CI/CD Pipeline with Python, Terraform, GitHub Actions, and Istio Integration 
 ## Automating Django , Celery , Redis and postgres deployment to AWS EC2 / EKS / ECS / Azure AKS using Terraform ( Complete Guide)
 
-![image](https://github.com/joelwembo/django-multitenant-saas-ecommerce-kubernetes/assets/19718580/f52b4f26-b42f-4f16-81fc-3aac8cc62f82)
+![image](https://github.com/user-attachments/assets/51952bdc-5017-4203-a191-cefcf07ac0f7)
 
 - [@Joel O. Wembo](https://www.joelotepawembo.com)
 - [@twitter](twitter.com/joelwembo1)
@@ -9,7 +9,7 @@
 
 
 ## Introduction
-Automating deployment processes is crucial for modern web development, enhancing productivity and reliability. In this article, we focus on automating the deployment of a Django web application onto an Ubuntu Server hosted on AWS EC2.
+In this article, we explore the integration of Terraform, Kubernetes, and Azure CLI within a GitHub Actions workflow to automate the django deployment and management of cloud infrastructure. With a focus on best practices for Continuous Integration and Continuous Deployment (CI/CD) pipelines, we demonstrate how to securely manage Azure credentials, configure Kubernetes access, and execute Azure CLI commands. This guide provides practical examples and step-by-step instructions, empowering DevOps professionals to streamline their workflows and ensure reliable deployments across cloud environments.
 
 
 ### Prerequisites:
@@ -293,6 +293,7 @@ kubectl apply -f deployment-django-dev.yaml
 kubectl apply -f prodxcloud-django-web-dev-service.yaml
 
 # For more information about the author visit
+https://blog.devgenius.io/django-devops-with-kubernetes-django-deployment-to-azure-aks-using-ci-cd-pipeline-with-terraform-76c138be2ada
 
 - [@Joel O. Wembo](https://www.joelotepawembo.com)
 - [@twitter](twitter.com/joelwembo1)
