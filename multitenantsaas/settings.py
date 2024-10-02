@@ -7,6 +7,51 @@ from unipath import Path
 from dotenv import load_dotenv
 from datetime import timedelta
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # This keeps the default Django loggers enabled
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join('django_debug.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'finances': {
+        'handlers': ['console', 'file'],
+        'level': 'INFO',
+        'propagate': False,
+       },
+    },
+}
+
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent

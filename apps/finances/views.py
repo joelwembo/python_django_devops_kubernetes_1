@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 import os
 import datetime
 import math
@@ -93,6 +94,15 @@ from django import forms
     
 # File Upload with Celery Ends Here
 
+
+
+# import logging
+
+# logger = logging.getLogger('finances')
+
+# def my_view(request):
+#     logger.debug('Debugging some issue in finances module')
+#     return HTTPResponse('Logging example')
 
 # Account Generic View
 class Accounts(generics.GenericAPIView):
