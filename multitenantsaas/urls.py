@@ -80,8 +80,8 @@ urlpatterns = [
         name="create-checkout-session",
     ),
     # path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
-    # path("__debug__/", include("debug_toolbar.urls")),
-    # path("data-browser/", include("data_browser.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path("data-browser/", include("data_browser.urls")),
     # path('ledger/', include('django_ledger.urls', namespace='django_ledger')),
  
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',

@@ -102,7 +102,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'django_extensions',
+    'django_celery_results',
+    'django_celery_beat',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
@@ -115,7 +118,9 @@ INSTALLED_APPS = [
     'apps.finances',
     'apps.payments',
     'apps.products',
-    'django_ledger'
+    'django_ledger',
+     'data_browser',
+    'template_timings_panel'
 
 ]
 
@@ -139,23 +144,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     # "django_tenants.middleware.main.TenantMainMiddleware"
 ]
 
-# DEBUG_TOOLBAR_PANELS = [
-#         'debug_toolbar.panels.versions.VersionsPanel',
-#         'debug_toolbar.panels.settings.SettingsPanel',
-#         'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-#         'debug_toolbar.panels.timer.TimerPanel',
-#         'debug_toolbar.panels.headers.HeadersPanel',
-#         'debug_toolbar.panels.request.RequestPanel',
-#         'debug_toolbar.panels.sql.SQLPanel',
-#         'debug_toolbar.panels.cache.CachePanel',
-#         'debug_toolbar.panels.profiling.ProfilingPanel',
-#         'debug_toolbar.panels.history.HistoryPanel',
-#         'template_timings_panel.panels.TemplateTimings.TemplateTimings',
-#     ]
+DEBUG_TOOLBAR_PANELS = [
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.profiling.ProfilingPanel',
+        'debug_toolbar.panels.history.HistoryPanel',
+        'template_timings_panel.panels.TemplateTimings.TemplateTimings',
+    ]
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -190,24 +195,24 @@ WSGI_APPLICATION = 'multitenantsaas.wsgi.application'
 # config.DATABASE_URL = 'bolt://neo4j+s://f89c638e.databases.neo4j.io:7687'
 
 # SQLite Database 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-    }
-}
-
-## Postgres Database
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get("POSTGRES_NAME"),
-#         'USER': os.environ.get("POSTGRES_USER"),
-#         'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
-#         'HOST': os.environ.get("POSTGRES_HOST"),
-#         'PORT': int(os.environ.get("POSTGRES_PORT")),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'db.sqlite3',
 #     }
 # }
+
+## Postgres Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("POSTGRES_NAME"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': os.environ.get("POSTGRES_HOST"),
+        'PORT': int(os.environ.get("POSTGRES_PORT")),
+    }
+}
 
 # DATABASE_ROUTERS = (
 #     'django_tenants.routers.TenantSyncRouter',
