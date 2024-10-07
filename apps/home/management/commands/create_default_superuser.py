@@ -10,13 +10,13 @@ class Command(BaseCommand):
         parser.add_argument(
             '--username',
             type=str,
-            default='admin',
+            default='admin123',
             help='Specify the username for the superuser (default: admin)',
         )
         parser.add_argument(
             '--email',
             type=str,
-            default='admin@example.com',
+            default='admin@prodxcloud.com',
             help='Specify the email for the superuser (default: admin@example.com)',
         )
         parser.add_argument(
